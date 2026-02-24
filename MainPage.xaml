@@ -1,0 +1,15 @@
+﻿using Microsoft.Maui.Devices.Sensors;
+
+private async void BtnGetGPS_Clicked(object sender, EventArgs e)
+{
+    var request = new GeolocationRequest(
+        GeolocationAccuracy.Best,
+        TimeSpan.FromSeconds(10));
+
+    var location = await Geolocation.GetLocationAsync(request);
+
+    if (location != null)
+    {
+        lblGPS.Text = $"Lat: {location.Latitude}\nLng: {location.Longitude}";
+    }
+}
